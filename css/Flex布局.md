@@ -4,6 +4,11 @@ type: guide
 order: 201
 ---
 
+## 原理图
+![父容器属性](./img/flex1.png)
+
+![子容器属性](./img/flex2.png)
+
 ## 属性
 
 | Properties 属性                                              | CSS Version 版本 | Inherit From Parent 继承性 | Description 简介                                           |
