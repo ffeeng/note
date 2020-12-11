@@ -72,6 +72,7 @@ jQuery.fn.init = function( selector, context, root ) {
 ## JQuery和$
 
 ```js
+$('div').__proto__  === JQuery.prototype === JQuery.fn;
 
 jQuery = function( selector, context ) {
 
