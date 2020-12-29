@@ -3,6 +3,19 @@
 Promise based HTTP client for the browser and node.js
 基于Promise的httpClient兼容浏览器和node
 
+## axios请求图片
+- 要加上responseType: 'arraybuffer'
+```js
+let res = await axios.post(`https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=${access_token}`, {
+  'path': 'page/index/index',
+  'width': 430
+}, {
+  responseType: 'arraybuffer'
+});
+response.setHeader('content-type',res.headers['content-type'])
+response.send(res.data)
+response.end();
+```
 ## 特性
 - 在浏览器发XMLHttpRequest请求
 - 在node发http请求
