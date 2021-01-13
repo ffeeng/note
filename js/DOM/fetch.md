@@ -1,5 +1,6 @@
 ## fetch
 
+
 ## 请求库
 ### 浏览器端使用
 - XMLHttpRequest
@@ -13,6 +14,10 @@
 1. 浏览器自带fetch，浏览器上使用有跨域问题
 2. node需安装node-fetch,没有跨域问题
 
+## fetch vs XMLHttpRequest
+- fetch使用 Promise,不适用回调、写代码简洁
+- fetch采用模块化设计,API分散在Response对象、Request对象、Headers对象,设计更合理
+- fetch通过数据流处理数据，分块读取，有利于提高网站性能表现，减少内存占用,对于请求大文件或者网速慢的场景相当有用)
 
 ### get请求
 
@@ -108,5 +113,9 @@ axios.request( {
 - formData.append('img', fs.createReadStream(__dirname + '/1.jpg'));
 
 
-## FormData
+## 参考文件
+- [Fetch API 教程](http://www.ruanyifeng.com/blog/2020/12/fetch-tutorial.html)
+- [axios](https://github.com/axios/axios) 
+- [node-fetch](https://github.com/node-fetch/node-fetch)
+- [request](https://github.com/request/request)
 - [FormData](https://github.com/form-data/form-data#buffer-getbuffer)
