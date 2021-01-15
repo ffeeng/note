@@ -1,9 +1,28 @@
+
 ## axios
+[TOC]
 ## 定位
 Promise based HTTP client for the browser and node.js
 基于Promise的httpClient兼容浏览器和node
 
+
+## 特性
+- 支持promise
+- 同构代码（跨端） 浏览器上基于XMLHttpRequest  node上基于http
+- 请求响应拦截器(洋葱模型)
+- 支持防XSRF攻击
+- 取消请求
+
+![axios原型](./img/axios.png)
+
+## 洋葱模型
+
+请求拦截器 -> 发请求 -> 响应拦截器
+
+注意请求拦截器和响应拦截器都是数组
+
 ## axios请求图片
+
 - 要加上responseType: 'arraybuffer'
 ```js
 let res = await axios.post(`https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=${access_token}`, {
@@ -16,15 +35,6 @@ response.setHeader('content-type',res.headers['content-type'])
 response.send(res.data)
 response.end();
 ```
-## 特性
-- 在浏览器发XMLHttpRequest请求
-- 在node发http请求
-- 支持promise
-- 请求响应拦截器
-- 支持防XSRF攻击
-- 取消请求
-
-![axios原型](./img/axios.png)
 
 ## 全部配置axios.defaults
 - axios.defaults保存axios的全局配置
@@ -108,6 +118,9 @@ axios.request({ method: 'delete', url, data })
 ```
 
 ## 核心函数
+
+### 浏览器端
+
 ```js
 // XMLHttpRequest封装
 module.exports = function xhrAdapter(config) {
@@ -278,7 +291,10 @@ module.exports = function xhrAdapter(config) {
     request.send(requestData);
   });
 };
+```
+### node端
 
+```js
 //http封装
 module.exports = function httpAdapter(config) {
   return new Promise(function dispatchHttpRequest(resolvePromise, rejectPromise) {
@@ -540,6 +556,7 @@ module.exports = function httpAdapter(config) {
   });
 };
 ```
+
 ## axios防御XSRF攻击
 
 ```js
