@@ -1,6 +1,5 @@
+[TOC]
 ## 影子dom例子
-
-[Web components](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)
 
 ```html
 <!DOCTYPE html>
@@ -162,3 +161,5 @@
 </html>
 ```
 
+## 参考
+- [Web components](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)

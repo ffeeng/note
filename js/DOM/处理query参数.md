@@ -1,8 +1,7 @@
 ## URLSearchParams
 
 - 规范
-
-  URLSearchParams属于URL标准规范，浏览器和node都支持
+URLSearchParams属于URL标准规范，浏览器和node都支持
 
 ```web-idl
 [Exposed=(Window,Worker)]
@@ -69,16 +68,12 @@ name=feng&hobby=sing%2Cread   -->decodeURIComponent('%2C')===','
 ```
 
 - 注意
-
-   当使用字符串为构造函数时： 字符串必须是问号开头或者没有问号	
+当使用字符串为构造函数时： 字符串必须是问号开头或者没有问号	
 
 - 源码
+[node实现](https://github.com/nodejs/node/tree/master/lib/internal)
 
-  [node实现](https://github.com/nodejs/node/tree/master/lib/internal)
-
-- 参考
-
-  [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams?a=1607151405934)
-
-  [url规范](https://url.spec.whatwg.org/#urlsearchparams)
+## 参考
+- [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams?a=1607151405934)
+- [url规范](https://url.spec.whatwg.org/#urlsearchparams)
 

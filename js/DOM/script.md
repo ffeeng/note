@@ -1,12 +1,6 @@
-- 
 
 
-
-
-
-
-
-```
+```html
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head></head>
@@ -47,7 +41,6 @@
 
   ![image-20201026173635889](https://tva1.sinaimg.cn/large/0081Kckwgy1gk2vebcexaj31pi0ga7ag.jpg)
 
-- 参考
-
-   [html5规范](https://html.spec.whatwg.org/multipage/scripting.html#the-script-element)
+### 参考
+- [html5规范](https://html.spec.whatwg.org/multipage/scripting.html#the-script-element)
 
