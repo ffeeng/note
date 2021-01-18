@@ -59,11 +59,6 @@
 | `filename:*FILENAME*` | [**filename:linguist**](https://github.com/search?utf8=✓&q=filename%3Alinguist&type=Code) matches files named "linguist."                                    [filename:.vimrc commands](https://github.com/search?q=filename%3A.vimrc+commands&type=Code) matches *.vimrc* files with the word "commands." |
 | `extension:*EXTENSION*` | [**form path:cgi-bin extension:pm**](https://github.com/search?q=form+path%3Acgi-bin+extension%3Apm&type=Code) matches code with the word "form," under *cgi-bin*, with the *.pm* file extension. |
 |  | [** icon size:>200000 extension:css**](https://github.com/search?utf8=✓&q=icon+size%3A>200000+extension%3Acss&type=Code) matches files larger than 200 KB that end in .css and have the word "icon." |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
 
 
 
