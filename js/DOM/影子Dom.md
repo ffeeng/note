@@ -1,6 +1,9 @@
 [TOC]
 ## 影子dom例子
 
+## template
+## slot
+## customElements.define('element-details',...)
 ```html
 <!DOCTYPE html>
 <html lang="en">
