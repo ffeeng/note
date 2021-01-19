@@ -1,5 +1,4 @@
-## node文件操作
-
+[TOC]
 
 ## 常用文件操作
 - 读路径 fs.readdirSync(currentRoot)
@@ -42,8 +41,7 @@ function generatorCode(currentRoot) {
 
 ```
 
-
-- express返回图片
+## express返回图片
 ```js
 let fs = require('fs');
 let buff = fs.readFileSync('1.jpg');

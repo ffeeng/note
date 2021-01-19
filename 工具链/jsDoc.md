@@ -1,7 +1,6 @@
-# 流程图
-
+## jsDoc 注释
 * @name commit
-* @memberOf _
+* @memberOf 
 * @static
 * @memberOf _
 * @since 0.5.0
