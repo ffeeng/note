@@ -1,8 +1,7 @@
-## URLSearchParams
+[TOC]
 
-- 规范
-URLSearchParams属于URL标准规范，浏览器和node都支持
-
+## 规范
+- URLSearchParams属于URL标准规范，浏览器和node都支持
 ```web-idl
 [Exposed=(Window,Worker)]
 interface URLSearchParams {
@@ -22,10 +21,9 @@ interface URLSearchParams {
 };
 ```
 
-- 用法
-
+## 用法
+### 传字符串
 ```js
-//传字符串
 let url = '?name=feng&hobby=sing&hobby=read'
 let params = new URLSearchParams(url);
 console.log(params.get('name'))
@@ -38,22 +36,11 @@ sing
 URLSearchParams { 'name' => 'feng', 'hobby' => 'sing', 'hobby' => 'read' }
 name=feng&hobby=sing&hobby=read
 **/
+```
 
-// 传对象
+### 传对象
+```js
 let url = {name:'feng',hobby:['sing','read']}
-let params = new URLSearchParams(url);
-console.log(params.get('name'))
-console.log(params.get('hobby'))
-console.log(params)
-console.log(params.toString())
-/** 输出结果
-feng
-sing,read
-URLSearchParams { 'name' => 'feng', 'hobby' => 'sing,read' }
-name=feng&hobby=sing%2Cread   -->decodeURIComponent('%2C')===','
-**/
-
-let url = [['name','feng'],['hobby',['sing','read']]]
 let params = new URLSearchParams(url);
 console.log(params.get('name'))
 console.log(params.get('hobby'))
@@ -67,10 +54,25 @@ name=feng&hobby=sing%2Cread   -->decodeURIComponent('%2C')===','
 **/
 ```
 
-- 注意
+### 传数组
+```js
+let url = [['name','feng'],['hobby',['sing','read']]]
+let params = new URLSearchParams(url);
+console.log(params.get('name'))
+console.log(params.get('hobby'))
+console.log(params)
+console.log(params.toString())
+/** 输出结果
+feng
+sing,read
+URLSearchParams { 'name' => 'feng', 'hobby' => 'sing,read' }
+name=feng&hobby=sing%2Cread   -->decodeURIComponent('%2C')===','
+**/
+```
+### 注意
 当使用字符串为构造函数时： 字符串必须是问号开头或者没有问号	
 
-- 源码
+## 源码
 [node实现](https://github.com/nodejs/node/tree/master/lib/internal)
 
 ## 参考

@@ -1,8 +1,4 @@
----
-title: Flex布局
-type: guide
-order: 201
----
+[TOC]
 
 ## 原理图
 ![父容器属性](./img/flex1.png)
