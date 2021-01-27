@@ -1,3 +1,19 @@
+## 端口占用
+### mac
+```shell script
+# 查看端口被那个进程占用 port:8000
+lsof -i:8000  
+# pid:871
+kill -9 871 
+```
+
+### windows
+```shell script
+# 查看端口被那个进程占用 port:8000
+netstat -aon|findstr "8000"
+# pid:871
+taskkill /T /F /PID 871 
+```
 ## telnet的作用
 
 - 远程登录主机
