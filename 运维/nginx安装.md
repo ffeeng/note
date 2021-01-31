@@ -110,12 +110,15 @@ server {
 ## linux上nginx 常用命令
 
 ```shell
+nginx -t
+nginx -s reload
+
 systemctl stop nginx
 systemctl restart nginx
 systemctl status nginx
 ```
-    
-    
+
+​    
 
 ### 参考
 - [nginx指令](https://nginx.org/en/docs/dirindex.html)
