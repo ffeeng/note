@@ -8,7 +8,15 @@
 
   `/usr/bin/mysqladmin flush-hosts -h192.168.xx.xx -P3306 -uroot -p123`
 
-  
+
+```mysql
+show databases;
+create database xf_live;
+use xf_live;
+source
+```
+
+
 
 ## 参考
 
