@@ -1,81 +1,134 @@
 [TOC]
+![image-20210220153221693](https://tva1.sinaimg.cn/large/008eGmZEgy1gnwd9trbjlj30r00cugm3.jpg)
+![时序图](https://tva1.sinaimg.cn/large/008eGmZEgy1gnwd9m4bejj30y40u07an.jpg)
 
-## webRTC直播原理
-1. 获取token
-2. 登录房间
-3. 获取房间用户列表
-4. 服务端流更新回调
-5. 获取webrtc_url地址
-6. 心跳保证房间不销毁（30秒一次）
 
-![image-20210127181600818](https://tva1.sinaimg.cn/large/008eGmZEgy1gn2f5xd0suj311s0gaqb2.jpg)
 
-## 流媒体 StreamMedia
-## video推流
-video.srcObject = {
-    active: true
-    id: "kbBS3BIQFoi5li1BdWISCr3fon4PK1mvnQFB"
-    onactive: null
-    onaddtrack: null
-    oninactive: null
-    onremovetrack: null
-}
+### [web直播](https://doc-zh.zego.im/zh/7638.html)
 
-## video拉流
-video.srcObject = {
-    active: true
-    id: "8cd67b8b-b014-4dd8-8fcc-b6df06b420fe"
-    onactive: null
-    onaddtrack: null
-    oninactive: null
-    onremovetrack: null
-}
+- WebRTC  采集传输 STUN(Session Traversal Utilities for NAT, TURN ChannelData Message)
+- video   播放 
+- 流媒体服务器  处理
+- webSocket（ZegoExpressWebRTC-sdk） 发房间消息 在线人数
 
+#### 实现原理
+- 采集 
+- 预览
+- 传输 推流
+- 显示 拉流
+- 最小原型
 ```javascript
-let context = {
-  audio: {
-    audioBitrate: 46.77236429642547,
-    audioCodec: "opus",
-    audioFPS: 50.00181484451666,
-    audioJitter: 0.012,
-    audioLevel: 0,
-    audioPacketsLost: 0,
-    audioPacketsLostRate: 0,
-    audioQuality: 5,
-    audioSamplingRate: 492.0399999996975,
-    audioSendLevel: 19.16477463154686,
-    googCodecName: "opus",
-    muteState: "0"
-  },
-  codecImplementationName: "ExternalDecoder",
-  currentRoundTripTime: 0.016,
-  googAvailableSendBandwidth: "300000",
-  muted: false,
-  nackCount: 241,
-  paused: true,
-  playData: 0,
-  pliCount: 2,
-  sinkId: "",
-  totalRoundTripTime: 2.859,
-  video: {
-    frameHeight: 240,
-    frameWidth: 320,
-    googCodecName: "H264",
-    muteState: "0",
-    videoBitrate: 303.37101102465147,
-    videoFPS: 15.000544453354996,
-    videoFramesDecoded: 7317,
-    videoFramesDropped: 0,
-    videoPacketsLost: 0,
-    videoPacketsLostRate: 0,
-    videoQuality: 5,
-    videoTransferFPS: 15.000544453354996
-  },
-  volume: 1
-}
+let constraints = { audio: true, video: { width: 1280, height: 720 } };
+// 视频采集
+const mediaStream = await navigator.mediaDevices.getUserMedia(constraints)                                                                          
+// 预览
+video.srcObject = mediaStream;
+video.onloadedmetadata = function(e) {
+    video.play();
+};
+// 传输 WebRTC todo 
+// 显示
+video.srcObject = remoteStream;
 ```
 
 
+#### 实现步骤
+1. 登录房间
+2. 推流  
+3. 流更新获取拉流地址
+```javascript
+await zg.loginRoom(this.data.roomID, this.data.token, {userID: this.data.userID, userName: 'nick' + this.data.userID});
+// 获取推流地址
+const {url} = await zg.startPublishingStream(context.data.pushStreamID);
+// 推流到服务启后触发流更新 从streamList中拿到拉流src
+zg.on("roomStreamUpdate", (roomID, updateType, streamList) => {
+  // ... 解析出 remoteStream
+  video.srcObject = remoteStream
+});
+```
+
+
+### demo
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WebRTC直播</title>
+  <script src="./ZegoExpressWebRTC-2.1.0.js"></script>
+</head>
+<body>
+<video id="local-video" autoplay width="500px" height="500px"></video>
+<video id="remote-video" autoplay width="500px" height="500px"></video>
+
+<script>
+  (async () => {
+    try {
+      let appID = 173****9272****706; // 请从官网控制台获取对应的appID
+      let server = 'wss://webliveroom-test.zego.im/ws'; // 请从官网控制台获取对应的server地址，否则可能登录失败
+      const userId = '1';
+      const zg = new ZegoExpressEngine(appID, server);
+      // console.log(zg)
+      let url = 'https://wsliveroom-alpha.zego.im:8282/token';
+      const query = new URLSearchParams({
+        app_id: appID,
+        id_name: userId
+      });
+      url = url + '?' + query.toString();
+      // url = 'https://wsliveroom-alpha.zego.im:8282/token?app_id=1739272706&id_name=sample1613981824652'
+      const res = await fetch(url);
+      const token = await res.text();
+
+      const result = await zg.loginRoom('2', token, {
+        userID: userId,
+        userName: 'feng'
+      });
+      console.warn({result})
+
+      let constraints = {
+        camera: {
+          AEC: true,
+          AGC: true,
+          ANS: true,
+          audio: true,
+        }
+      }
+      const localStream = await zg.createStream(constraints);
+      let localVideo = document.getElementById('local-video');
+      let remoteVideo = document.getElementById('remote-video');
+      localVideo.srcObject = localStream;
+      // localStream 为创建流获取的 MediaStream 对象
+      let t = zg.startPublishingStream('stream002', localStream)
+      console.warn('publish stream' , t);
+
+
+      zg.on('publisherStateUpdate',async result => {
+        console.warn('publisherStateUpdate',result);
+        const remoteStream = await zg.startPlayingStream(result.streamID);
+        // remoteVideo为本地<video>或<audio>对象
+        remoteVideo.srcObject = remoteStream;
+        // 推流状态更新回调
+        // ...
+      })
+
+      zg.on('publishQualityUpdate', (streamID, stats) => {
+        console.warn('publishQualityUpdate',result);
+        // 推流质量回调
+        // ...
+      })
+    } catch (e) {
+      console.error(e);
+    }
+  })();
+
+</script>
+</body>
+</html>
+```
+
 ## 参考
-- [zego demo](https://zegodev.github.io/zego-express-webrtc-sample/base/index.html)
-- [zego 开发者中心](https://doc-zh.zego.im/zh/3546.html)
+- [直播实现流程](https://doc-zh.zego.im/zh/7638.html)
+- [webrtc demo](https://zegodev.github.io/zego-express-webrtc-sample/)
