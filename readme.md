@@ -16,6 +16,12 @@
 3. 看规范
 4. 看规范实现
 
+## 前端学习方向
+1. 可视化 webGL three.js canvas svg
+2. 工程化 脚手架 打包工具 开发联调工具
+3. 自动化 
+4. 智能化
+
 ## 学习资源
 ### 博客书籍文档
 [前端手册2019](https://frontendmasters.com/books/front-end-handbook/2019/)  

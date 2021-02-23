@@ -1,6 +1,6 @@
 [TOC]
 ## 常用方法
-![image-20210120163827786](/Users/zego/Library/Application Support/typora-user-images/image-20210120163827786.png)
+![image-20210120163827786](https://tva1.sinaimg.cn/large/008eGmZEgy1gnxgwdrbx7j30mf0mljuu.jpg)
 
 ### Array.prototype[@@unscopables]
 - 表示不能用到 `with` 语句的作用域内。
@@ -12,7 +12,7 @@ with(Array.prototype) {
   console.log(fill);
 }
 ```
-![image-20210121140613760](/Users/zego/Library/Application Support/typora-user-images/image-20210121140613760.png)
+![image-20210121140613760](https://tva1.sinaimg.cn/large/008eGmZEgy1gnxgwlsnpdj30id07e3zc.jpg)
 
 ## 常用示例
 ```javascript
@@ -55,7 +55,7 @@ new Array(2);
 
 ### 运行截图
 
-![image-20210121115111132](/Users/zego/Library/Application Support/typora-user-images/image-20210121115111132.png)
+![image-20210121115111132](https://tva1.sinaimg.cn/large/008eGmZEgy1gnxgwomatoj30fr0kh41m.jpg)
 
 ## 实现常用的Array函数
 - [实现规范参考ECMA规范](https://tc39.es/ecma262/#sec-properties-of-the-array-prototype-object)
