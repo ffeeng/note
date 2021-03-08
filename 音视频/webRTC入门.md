@@ -32,7 +32,33 @@ Flv
 
 ## srcObject
 ## StreamMedia
+```javascript
+// 麦克风
+getAudioTracks(): MediaStreamTrack[];
+// 摄像头
+getVideoTracks(): MediaStreamTrack[];
+localStream.getTracks();
+```
+- 获取媒体设备 navigator.mediaDevices.enumerateDevices()
+- RTCPeerConnection
+- peerConnection.addTrack(track, this.localStream);
+
+## websocket做了 也做了WebRTC信令
+
+- 房间信令
+
+  ![image-20210225185315021](https://tva1.sinaimg.cn/large/008eGmZEgy1gnzzdin1mpj31vs0rotfe.jpg)
+
+  ![image-20210225185641137](https://tva1.sinaimg.cn/large/008eGmZEgy1gnzzdjpntcj31rq0d2wlr.jpg)
+
+- webRTC信令
+
+  ![image-20210225185819523](https://tva1.sinaimg.cn/large/008eGmZEgy1gnzzdfixf1j31vi0t2tfu.jpg)
+
+  ![image-20210225185845101](https://tva1.sinaimg.cn/large/008eGmZEgy1gnzzdl0pujj31to0s2aro.jpg)
+
 ## mediaPlayer
+
 ## video
 
 ## audio
