@@ -24,7 +24,7 @@
 
 ## 思想认识上
 1. 怎么实现
-2. 实现
+2. [实现（核心逻辑和参数校验逻辑分开）](https://github.com/jsdom/jsdom/blob/master/lib/jsdom/living/fetch/Headers-impl.js)
 3. 存在什么问题，怎么优化
 4. 优化后，还有改进空间否
 5. 怎么复用
