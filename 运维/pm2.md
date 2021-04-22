@@ -10,8 +10,8 @@
 pm2 start pm2-config.json
 pm2 restart all
 pm2 stop all
-pm2 delete 1,2
-pm2 log 1,2
+pm2 delete 1 2
+pm2 log 1 2
 ```
 
 ## config

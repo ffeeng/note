@@ -30,9 +30,12 @@
 5. 怎么复用
 
 ## 学习资源
-### 博客书籍文档
+### 官方文档
+
 [前端手册2019](https://frontendmasters.com/books/front-end-handbook/2019/)  
 [MDN](https://developer.mozilla.org/)  
+[nginx](http://nginx.org/en/docs/)  
+[mysql](https://dev.mysql.com/doc/refman/8.0/en/examples.html)
 [GitHub](https://github.com/)  
 [掘金](https://juejin.im)  
 [Node.js](https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick/#what-is-the-event-loop)  
@@ -43,6 +46,9 @@
 [Ecma](https://www.ecma-international.org/ecma-262/)  
 [WhatWg](https://whatwg-cn.github.io/html/)  
 [W3C](https://www.w3.org/TR/?tag=dom)  
+[http rfc](https://tools.ietf.org/html/rfc2616)  
+[websocket rfc](https://tools.ietf.org/html/rfc6455)  
+
 
 ### 常用工具
 [Babel](https://www.babeljs.cn/repl)  
